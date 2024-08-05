@@ -12,6 +12,7 @@ from autoverify.verifier import AbCrown
 import multiprocessing
 from functools import partial
 from multiprocessing import Lock
+from definitions import DATASETS_ROOT, MNIST_NETWORK_FOLDER
 
 from robustness_experiment_box.database.experiment_repository import ExperimentRepository
 from robustness_experiment_box.dataset_sampler.dataset_sampler import DatasetSampler
@@ -37,11 +38,12 @@ def create_data(data_point: DataPoint, experiment_repository: ExperimentReposito
     with lock:
         experiment_repository.save_result(epsilon_value_result)
 
-def create_distribution(experiment_repository: ExperimentRepository, dataset: ExperimentDataset, dataset_sampler: DatasetSampler, epsilon_value_estimator: EpsilonValueEstimator):
+def create_distribution(experiment_repository: ExperimentRepository, dataset: ExperimentDataset, dataset_sampler: DatasetSampler, epsilon_value_estimator: EpsilonValueEstimator, network_index):
 
     lock = Lock()
     network_list = experiment_repository.get_network_list()
     failed_networks = []
+    network_list = [network_list[network_index]] if network_index else network_list
     for network in network_list:
         try:
             sampled_data = dataset_sampler.sample(network, dataset)
@@ -55,35 +57,26 @@ def create_distribution(experiment_repository: ExperimentRepository, dataset: Ex
     experiment_repository.save_plots()
     logging.info(f"Failed for networks: {failed_networks}")
 
-def main():
+def run_mnist_experiment(verifier_module, experiment_name: str, 
+                         network_folder_path=MNIST_NETWORK_FOLDER,
+                         experiment_repository_path=Path(f'./generated'), 
+                         num_samples=100, network_index=None):
 
-    timeout = 50
     epsilon_list = np.arange(0, 0.4, 1/255)
-    experiment_repository_path = Path(f'./generated')
-    network_folder = Path("./networks/mnist_networks")
-    torch_dataset = torchvision.datasets.MNIST(root="../data", train=False, download=False, transform=transforms.ToTensor())
+    torch_dataset = torchvision.datasets.MNIST(root=DATASETS_ROOT, train=False, download=True, transform=transforms.ToTensor())
 
     dataset = PytorchExperimentDataset(dataset=torch_dataset)
-    dataset = dataset.get_subset([x for x in range(0,100)])
+    dataset = dataset.get_subset([x for x in range(0,num_samples)])
 
-    experiment_repository = ExperimentRepository(base_path=experiment_repository_path, network_folder=network_folder)
-
-    property_generator = One2AnyPropertyGenerator()
-    
-    # Create distribution using AB-Crown verifier
-    experiment_name = "first_100_images_multiprocessing_abcrown"
-    verifier = AutoVerifyModule(verifier=AbCrown(), property_generator=property_generator, timeout=timeout, config=Path("experiments/abcrown_verification/ffn_config.yaml"))
-    epsilon_value_estimator = BinarySearchEpsilonValueEstimator(epsilon_value_list=epsilon_list.copy(), verifier=verifier)
+    experiment_repository = ExperimentRepository(base_path=experiment_repository_path, network_folder=network_folder_path)
+    epsilon_value_estimator = BinarySearchEpsilonValueEstimator(epsilon_value_list=epsilon_list.copy(), verifier=verifier_module)
     dataset_sampler = PredictionsBasedSampler(sample_correct_predictions=True)
     experiment_repository.initialize_new_experiment(experiment_name)
     experiment_repository.save_configuration(dict(
                                         experiment_name=experiment_name, experiment_repository_path=str(experiment_repository_path),
-                                        network_folder=str(network_folder), dataset=str(dataset),
-                                        timeout=timeout, epsilon_list=[str(x) for x in epsilon_list]))
+                                        network_folder=str(network_folder_path), dataset=str(dataset),
+                                        epsilon_list=[str(x) for x in epsilon_list]))
 
-    create_distribution(experiment_repository, dataset, dataset_sampler, epsilon_value_estimator)
+    create_distribution(experiment_repository, dataset, dataset_sampler, epsilon_value_estimator, network_index)
 
-    
 
-if __name__ == "__main__":
-    main()
