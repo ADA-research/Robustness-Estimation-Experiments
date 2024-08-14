@@ -12,7 +12,7 @@ def main():
     # Create distribution using AutoAttack
     experiment_name = "first_100_images_autoattack"
     attack_based_approximator = AttackEstimationModule(AutoAttackWrapper(device='cuda'))
-    experiment_repository_path = Path(RESULTS_ROOT, 'MNIST/autoattack/generated')
+    experiment_repository_path = Path(RESULTS_ROOT, 'MNIST')
     experiment_repository_path.mkdir(parents=True, exist_ok=True)
     run_mnist_experiment(attack_based_approximator, experiment_name, 
                          network_folder_path=MNIST_NETWORK_FOLDER,

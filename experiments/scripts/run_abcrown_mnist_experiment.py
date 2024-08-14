@@ -12,7 +12,7 @@ def main():
     timeout=600
     property_generator = One2AnyPropertyGenerator()
     verifier_module = AutoVerifyModule(verifier=AbCrown(), property_generator=property_generator, timeout=timeout, config=AB_CROWN_CONFIG)
-    experiment_repository_path = Path(RESULTS_ROOT, 'MNIST/abcrown/generated')
+    experiment_repository_path = Path(RESULTS_ROOT, 'MNIST')
     experiment_repository_path.mkdir(parents=True, exist_ok=True)
     run_mnist_experiment(verifier_module, experiment_name, 
                          network_folder_path=MNIST_NETWORK_FOLDER,
