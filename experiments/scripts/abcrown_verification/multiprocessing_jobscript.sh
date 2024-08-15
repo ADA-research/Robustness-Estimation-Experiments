@@ -1,6 +1,6 @@
 #!/bin/zsh
 #SBATCH --job-name=multiprocessing_abcrown
-#SBATCH --time=01:00:00
+#SBATCH --time=20:00:00
 #SBATCH --err /home/rwth1650/job_logs/multiprocessing_abcrown_err_%J.txt
 #SBATCH --out /home/rwth1650/job_logs/multiprocessing_abcrown_out_%J.txt
 #SBATCH --gres=gpu:1
