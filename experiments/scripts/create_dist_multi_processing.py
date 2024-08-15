@@ -38,29 +38,41 @@ def create_data(data_point: DataPoint, experiment_repository: ExperimentReposito
     with lock:
         experiment_repository.save_result(epsilon_value_result)
 
-def create_distribution(experiment_repository: ExperimentRepository, dataset: ExperimentDataset, dataset_sampler: DatasetSampler, epsilon_value_estimator: EpsilonValueEstimator, network_index):
-
-    lock = Lock()
+def create_distribution(experiment_repository: ExperimentRepository, dataset: ExperimentDataset, dataset_sampler: DatasetSampler, epsilon_value_estimator: EpsilonValueEstimator, network_index, multiprocessing=True):
     network_list = experiment_repository.get_network_list()
     failed_networks = []
     network_list = [network_list[network_index]] if network_index else network_list
-    for network in network_list:
-        try:
-            sampled_data = dataset_sampler.sample(network, dataset)
-        except Exception as e:
-            logging.info(f"failed for network: {network}, with exception: {e}")
-            failed_networks.append(network)
-            continue
-        with multiprocessing.Pool(processes=4, initializer=init, initargs=(lock,)) as pool:
-            pool.map(partial(create_data, experiment_repository=experiment_repository, epsilon_value_estimator=epsilon_value_estimator, network=network), sampled_data)
-
+    if multiprocessing:
+        lock = Lock()
+        for network in network_list:
+            try:
+                sampled_data = dataset_sampler.sample(network, dataset)
+            except Exception as e:
+                logging.info(f"failed for network: {network}, with exception: {e}")
+                failed_networks.append(network)
+                continue
+            with multiprocessing.Pool(processes=4, initializer=init, initargs=(lock,)) as pool:
+                pool.map(partial(create_data, experiment_repository=experiment_repository, epsilon_value_estimator=epsilon_value_estimator, network=network), sampled_data)
+    else:
+        logging.info('Using sequential calculation (i.e. no multiprocessing)')
+        for network in network_list:
+            try:
+                sampled_data = dataset_sampler.sample(network, dataset)
+                for data_point in sampled_data:
+                    verification_context = experiment_repository.create_verification_context(network, data_point)
+                    epsilon_value_result = epsilon_value_estimator.compute_epsilon_value(verification_context)
+                    experiment_repository.save_result(epsilon_value_result)
+            except Exception as e:
+                logging.info(f"failed for network: {network}, with exception: {e}")
+                failed_networks.append(network)
+                continue
     experiment_repository.save_plots()
     logging.info(f"Failed for networks: {failed_networks}")
 
 def run_mnist_experiment(verifier_module, experiment_name: str, 
                          network_folder_path=MNIST_NETWORK_FOLDER,
                          experiment_repository_path=Path(f'./generated'), 
-                         num_samples=100, network_index=None):
+                         num_samples=100, network_index=None, multiprocessing=True):
 
     epsilon_list = np.arange(0, 0.4, 1/255)
     torch_dataset = torchvision.datasets.MNIST(root=DATASETS_ROOT, train=False, download=True, transform=transforms.ToTensor())
@@ -77,6 +89,6 @@ def run_mnist_experiment(verifier_module, experiment_name: str,
                                         network_folder=str(network_folder_path), dataset=str(dataset),
                                         epsilon_list=[str(x) for x in epsilon_list]))
 
-    create_distribution(experiment_repository, dataset, dataset_sampler, epsilon_value_estimator, network_index)
+    create_distribution(experiment_repository, dataset, dataset_sampler, epsilon_value_estimator, network_index, multiprocessing=multiprocessing)
 
 
