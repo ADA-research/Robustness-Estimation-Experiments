@@ -2,6 +2,7 @@ import logging
 
 logging.basicConfig(format="%(asctime)s %(levelname)s %(message)s", level=logging.INFO)
 
+import pandas as pd
 from pathlib import Path
 import numpy as np
 import torch
@@ -60,13 +61,13 @@ def create_distribution(experiment_repository: ExperimentRepository, dataset: Ex
 def run_mnist_experiment(verifier_module, experiment_name: str, 
                          network_folder_path=MNIST_NETWORK_FOLDER,
                          experiment_repository_path=Path(f'./generated'), 
-                         num_samples=100, network_index=None):
+                         samples=[x for x in range(0,100)], network_index=None):
 
     epsilon_list = np.arange(0, 0.4, 1/255)
     torch_dataset = torchvision.datasets.MNIST(root=DATASETS_ROOT, train=False, download=True, transform=transforms.ToTensor())
 
     dataset = PytorchExperimentDataset(dataset=torch_dataset)
-    dataset = dataset.get_subset([x for x in range(0,num_samples)])
+    dataset = dataset.get_subset([x for x in samples])
 
     experiment_repository = ExperimentRepository(base_path=experiment_repository_path, network_folder=network_folder_path)
     epsilon_value_estimator = BinarySearchEpsilonValueEstimator(epsilon_value_list=epsilon_list.copy(), verifier=verifier_module)
