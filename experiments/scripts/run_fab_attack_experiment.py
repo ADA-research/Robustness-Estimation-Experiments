@@ -79,6 +79,7 @@ def run_mnist_experiment(network_folder_path=MNIST_NETWORK_FOLDER,
         for network in network_list:
             model = network.load_pytorch_model()
             # settings as used in autoattack
+            # TODO: eps is needed for random init, how should we choose it?
             fab = FABAttack_PT(model, n_restarts=5, n_iter=100, eps=0.3, seed=42,
                     norm='Linf', verbose=True, device=device, targeted=targeted)
             sampled_data = dataset_sampler.sample(network, dataset)
