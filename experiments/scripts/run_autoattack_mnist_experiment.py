@@ -17,7 +17,7 @@ def main():
     run_mnist_experiment(attack_based_approximator, experiment_name, 
                          network_folder_path=MNIST_NETWORK_FOLDER,
                          experiment_repository_path=experiment_repository_path, 
-                         num_samples=100, network_index=0)
+                         samples=list(range(100)), network_index=0)
 
 
 
