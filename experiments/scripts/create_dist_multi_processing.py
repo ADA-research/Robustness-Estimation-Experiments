@@ -42,8 +42,9 @@ def create_data(data_point: DataPoint, experiment_repository: ExperimentReposito
 def create_distribution(experiment_repository: ExperimentRepository, dataset: ExperimentDataset, dataset_sampler: DatasetSampler, epsilon_value_estimator: EpsilonValueEstimator, network_index, multiprocessing=True):
     network_list = experiment_repository.get_network_list()
     failed_networks = []
-    network_list = [network_list[network_index]] if network_index else network_list
+    network_list = [network_list[network_index]] if network_index is not None else network_list
     if multiprocessing:
+        logging.info('Using multiprocessing')
         lock = Lock()
         for network in network_list:
             try:
