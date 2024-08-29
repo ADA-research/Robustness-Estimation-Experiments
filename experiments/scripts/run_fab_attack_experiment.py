@@ -88,10 +88,12 @@ def run_mnist_experiment(network_folder_path=MNIST_NETWORK_FOLDER,
                 model.zero_grad()
 
                 start = time.time()
-                perturbed_data = fab.perturb(datapoint.data,torch.tensor([datapoint.label]))
+                datapoint_data = datapoint.data.to(device)
+                perturbed_data = fab.perturb(datapoint_data,torch.tensor([datapoint.label], device=device))
+                
                 duration = time.time() - start
 
-                perturbation = perturbed_data - datapoint.data
+                perturbation = perturbed_data - datapoint_data
                 perturbation_size = perturbation.flatten().abs().max().item()
 
                 output = model(perturbed_data)
@@ -105,7 +107,8 @@ def run_mnist_experiment(network_folder_path=MNIST_NETWORK_FOLDER,
                                       experiment_repo=experiment_repository, 
                                       targeted=targeted)
 
-if __name__ == 'main':
-     run_mnist_experiment(network_folder_path=MNIST_NETWORK_FOLDER,
+if __name__ == "__main__":
+    print('Running FAB-Attack experiment')
+    run_mnist_experiment(network_folder_path=MNIST_NETWORK_FOLDER,
                          experiment_repository_path=Path(RESULTS_ROOT, 'MNIST'), 
                          samples=[x for x in range(0,100)], device='cuda')
