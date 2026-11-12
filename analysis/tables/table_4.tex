@@ -1,0 +1,27 @@
+% Replaces the tabular of \label{tab:statistics:tight} in main_springer.tex
+\begin{tabularx}{.9\textwidth}{Xrrrr}
+\toprule
+\multicolumn{5}{c}{MNIST (158 instances across the 4 networks)} \\
+algorithm & time [s] & $Avg(\overline{\varepsilon}^*)$ & $f_{\text{opt}}$ & Ratio $Avg(\overline{\varepsilon}^*)$ \\
+\midrule
+VBA & 11.330 & 0.040 & 1.000 & 1.000 \\
+\abcrown & 82.993 & 0.040 & 1.000 & 1.000 \\
+AutoAttack & 17.312 & 0.040 & 0.905 & 1.009 \\
+PGD & 0.115 & 0.043 & 0.551 & 1.105 \\
+PGD\_random & 0.116 & 0.046 & 0.557 & 1.157 \\
+FGSM & 0.042 & 0.059 & 0.146 & 1.498 \\
+targeted\_FAB & 0.314 & 0.050 & 0.316 & 1.247 \\
+untargeted\_FAB & 0.488 & 0.042 & 0.677 & 1.051 \\
+\bottomrule
+\\
+\toprule
+\multicolumn{5}{c}{CIFAR-10 (91 instances across the 3 networks)} \\
+algorithm & time [s] & $Avg(\overline{\varepsilon}^*)$ & $f_{\text{opt}}$ & Ratio $Avg(\overline{\varepsilon}^*)$ \\
+\midrule
+VBA & 1.957 & 0.004 & 1.000 & 1.000 \\
+\abcrown & 95.589 & 0.004 & 1.000 & 1.000 \\
+AutoAttack & 21.349 & 0.004 & 1.000 & 1.000 \\
+PGD & 0.490 & 0.004 & 0.912 & 1.084 \\
+FGSM & 0.043 & 0.011 & 0.835 & 2.600 \\
+\bottomrule
+\end{tabularx}

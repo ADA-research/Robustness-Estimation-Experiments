@@ -1,0 +1,35 @@
+% Replaces the tabular of \label{fig:attack_100_log_normal_ks_tests} in main_springer.tex
+\begin{tabular}{llrrr}
+\toprule
+network & algorithm & statistic & p-value & passed \\
+\midrule
+\texttt{mnist\_relu\_3\_50} & \abcrown & 0.06 & 0.81 & True \\
+ & AutoAttack & 0.06 & 0.88 & True \\
+ & PGD & 0.06 & 0.82 & True \\
+ & PGD\_random & 0.05 & 0.91 & True \\
+ & FGSM & 0.05 & 0.97 & True \\
+ & targeted\_FAB & 0.06 & 0.85 & True \\
+ & untargeted\_FAB & 0.07 & 0.71 & True \\
+\texttt{mnist\_relu\_9\_100} & \abcrown & 0.07 & 0.78 & True \\
+ & AutoAttack & 0.07 & 0.76 & True \\
+ & PGD & 0.06 & 0.79 & True \\
+ & PGD\_random & 0.06 & 0.79 & True \\
+ & FGSM & 0.05 & 0.95 & True \\
+ & targeted\_FAB & 0.09 & 0.38 & True \\
+ & untargeted\_FAB & 0.08 & 0.48 & True \\
+\texttt{mnist\_relu\_4\_1024} & \abcrown & 0.06 & 0.89 & True \\
+ & AutoAttack & 0.06 & 0.89 & True \\
+ & PGD & 0.05 & 0.96 & True \\
+ & PGD\_random & 0.05 & 0.95 & True \\
+ & FGSM & 0.07 & 0.76 & True \\
+ & targeted\_FAB & 0.05 & 0.94 & True \\
+ & untargeted\_FAB & 0.06 & 0.88 & True \\
+\texttt{mnist-net\_256x2} & \abcrown & 0.09 & 0.42 & True \\
+ & AutoAttack & 0.08 & 0.55 & True \\
+ & PGD & 0.08 & 0.60 & True \\
+ & PGD\_random & 0.10 & 0.27 & True \\
+ & FGSM & 0.06 & 0.90 & True \\
+ & targeted\_FAB & 0.09 & 0.33 & True \\
+ & untargeted\_FAB & 0.09 & 0.36 & True \\
+\bottomrule
+\end{tabular}

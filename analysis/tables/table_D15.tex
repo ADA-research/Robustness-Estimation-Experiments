@@ -1,0 +1,22 @@
+% Replaces the tabular of \label{fig:attack_100_log_normal_ks_tests_imagenet} in main_springer.tex
+\begin{tabular}{llrrr}
+\toprule
+network & algorithm & stat. & p-value & passed \\
+\midrule
+\texttt{eva} & AutoAttack & 0.02 & 0.05 & True \\
+ & PGD & 0.02 & 0.21 & True \\
+ & FGSM & 0.08 & 0.00 & False \\
+\texttt{beitv2} & AutoAttack & 0.02 & 0.01 & False \\
+ & PGD & 0.02 & 0.19 & True \\
+ & FGSM & 0.09 & 0.00 & False \\
+\texttt{openai\_2} & AutoAttack & 0.02 & 0.01 & False \\
+ & PGD & 0.02 & 0.02 & False \\
+ & FGSM & 0.11 & 0.00 & False \\
+\texttt{laion\_2b} & AutoAttack & 0.02 & 0.02 & False \\
+ & PGD & 0.02 & 0.03 & False \\
+ & FGSM & 0.06 & 0.00 & False \\
+\texttt{openai\_1} & AutoAttack & 0.03 & 0.00 & False \\
+ & PGD & 0.02 & 0.05 & True \\
+ & FGSM & 0.08 & 0.00 & False \\
+\bottomrule
+\end{tabular}

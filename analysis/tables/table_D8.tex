@@ -1,0 +1,15 @@
+% Replaces the tabular of \label{fig:abcrown_ks_tests} in main_springer.tex
+\begin{tabular}{lllrrr}
+\toprule
+network & algorithm & measure & statistic & p-value & passed \\
+\midrule
+\texttt{mnist\_relu\_3\_50} & abcrown & $\overline{\varepsilon}^*$ & 0.06 & 0.81 & True \\
+ &  & $\underline{\varepsilon}^*$ & 0.07 & 0.64 & True \\ \hline
+\texttt{mnist\_relu\_9\_100} & abcrown & $\overline{\varepsilon}^*$ & 0.07 & 0.78 & True \\
+ &  & $\underline{\varepsilon}^*$ & 0.52 & 0.00 & False \\ \hline
+\texttt{mnist\_relu\_4\_1024} & abcrown & $\overline{\varepsilon}^*$ & 0.06 & 0.89 & True \\
+ &  & $\underline{\varepsilon}^*$ & 0.53 & 0.00 & False \\ \hline
+\texttt{mnist-net\_256x2} & abcrown & $\overline{\varepsilon}^*$ & 0.09 & 0.42 & True \\
+ &  & $\underline{\varepsilon}^*$ & 0.08 & 0.48 & True \\
+\bottomrule
+\end{tabular}

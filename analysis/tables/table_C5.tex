@@ -1,0 +1,16 @@
+% Replaces the tabular of \label{tab:total_times_combined_cifar} in main_springer.tex
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrrrrrrrr}
+\toprule
+ & \multicolumn{4}{c}{Time} & \multicolumn{4}{c}{$\overline{\varepsilon}^*$} & Failed \\
+  \cmidrule(lr){2-5}\cmidrule(lr){6-9}
+algorithm & mean & median & min & max & mean & min & max & std & [\%] \\
+\midrule
+VBA & 4.766 & 0.048 & 0.031 & 49.544 & 0.007 & 0.004 & 0.031 & 0.005 & 0.0 \\
+\abcrown & 1833.195 & 89.596 & 80.516 & 21727.114 & 0.007 & 0.004 & 0.031 & 0.005 & 0.0 \\
+AutoAttack & 25.623 & 21.879 & 17.076 & 52.313 & 0.007 & 0.004 & 0.031 & 0.005 & 0.0 \\
+PGD & 0.450 & 0.401 & 0.303 & 0.580 & 0.008 & 0.004 & 0.039 & 0.006 & 0.0 \\
+FGSM & 0.041 & 0.039 & 0.031 & 0.048 & 0.013 & 0.004 & 0.320 & 0.033 & 0.0 \\
+\bottomrule
+\end{tabular}

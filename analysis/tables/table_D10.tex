@@ -1,0 +1,31 @@
+% Replaces the tabular of \label{fig:attack_all_images_log_normal_tests_mnist} in main_springer.tex
+\begin{tabular}{llrrr}
+\toprule
+network & algorithm & statistic & p-value & passed \\
+\midrule
+\texttt{mnist\_relu\_3\_50} & AutoAttack & 0.04 & 0.00 & False \\
+ & PGD & 0.04 & 0.00 & False \\
+ & PGD\_random & 0.04 & 0.00 & False \\
+ & FGSM & 0.03 & 0.00 & False \\
+ & targeted\_FAB & 0.03 & 0.00 & False \\
+ & untargeted\_FAB & 0.04 & 0.00 & False \\
+\texttt{mnist\_relu\_9\_100} & AutoAttack & 0.04 & 0.00 & False \\
+ & PGD & 0.03 & 0.00 & False \\
+ & PGD\_random & 0.03 & 0.00 & False \\
+ & FGSM & 0.03 & 0.00 & False \\
+ & targeted\_FAB & 0.04 & 0.00 & False \\
+ & untargeted\_FAB & 0.03 & 0.00 & False \\
+\texttt{mnist\_relu\_4\_1024} & AutoAttack & 0.04 & 0.00 & False \\
+ & PGD & 0.03 & 0.00 & False \\
+ & PGD\_random & 0.03 & 0.00 & False \\
+ & FGSM & 0.06 & 0.00 & False \\
+ & targeted\_FAB & 0.04 & 0.00 & False \\
+ & untargeted\_FAB & 0.04 & 0.00 & False \\
+\texttt{mnist-net\_256x2} & AutoAttack & 0.11 & 0.00 & False \\
+ & PGD & 0.06 & 0.00 & False \\
+ & PGD\_random & 0.06 & 0.00 & False \\
+ & FGSM & 0.06 & 0.00 & False \\
+ & targeted\_FAB & 0.09 & 0.00 & False \\
+ & untargeted\_FAB & 0.08 & 0.00 & False \\
+\bottomrule
+\end{tabular}

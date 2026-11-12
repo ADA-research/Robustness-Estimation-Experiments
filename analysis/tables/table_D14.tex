@@ -1,0 +1,16 @@
+% Replaces the tabular of \label{fig:attack_100_vs_all_ks_tests_cifar} in main_springer.tex
+\begin{tabular}{llrr}
+\toprule
+algorithm & network & p-value & passed \\
+\midrule
+AutoAttack & \texttt{cifar\_7\_1024} & 0.17 & True \\
+ & \texttt{resnet\_4b} & 1.00 & True \\
+ & \texttt{conv\_big} & 1.00 & True \\
+PGD & \texttt{cifar\_7\_1024} & 0.15 & True \\
+ & \texttt{resnet\_4b} & 1.00 & True \\
+ & \texttt{conv\_big} & 1.00 & True \\
+FGSM & \texttt{cifar\_7\_1024} & 0.11 & True \\
+ & \texttt{resnet\_4b} & 0.86 & True \\
+ & \texttt{conv\_big} & 1.00 & True \\
+\bottomrule
+\end{tabular}

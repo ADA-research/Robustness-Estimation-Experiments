@@ -1,0 +1,15 @@
+% Replaces the tabular of \label{tab:total_times_combined_imagenet} in main_springer.tex
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrrrrrrrr}
+\toprule
+ & \multicolumn{4}{c}{Time} & \multicolumn{4}{c}{$\overline{\varepsilon}^*$} & Failed \\
+  \cmidrule(lr){2-5}\cmidrule(lr){6-9}
+algorithm & mean & median & min & max & mean & min & max & std & [\%] \\
+\midrule
+VBA & 127.9951 & 57.4030 & 0.7572 & 2566.9546 & 0.0036 & 0.0001 & 0.0686 & 0.0022 & 0.0 \\
+AutoAttack & 126.7052 & 59.9624 & 1.7545 & 2566.9546 & 0.0034 & 0.0001 & 0.0157 & 0.0016 & 10.1 \\
+PGD & 22.7866 & 15.0842 & 13.3469 & 85.9883 & 0.0093 & 0.0001 & 0.3187 & 0.0084 & 0.0 \\
+FGSM & 1.1289 & 0.7692 & 0.6942 & 4.2663 & 0.2124 & 0.0001 & 0.3998 & 0.1213 & 23.7 \\
+\bottomrule
+\end{tabular}

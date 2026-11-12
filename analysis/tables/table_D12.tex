@@ -1,0 +1,19 @@
+% Replaces the tabular of \label{fig:attack_100_log_normal_ks_tests_cifar} in main_springer.tex
+\begin{tabular}{llrrr}
+\toprule
+network & algorithm & statistic & p-value & passed \\
+\midrule
+\texttt{conv\_big} & \abcrown & 0.35 & 0.00 & False \\
+ & AutoAttack & 0.35 & 0.00 & False \\
+ & PGD & 0.34 & 0.00 & False \\
+ & FGSM & 0.36 & 0.00 & False \\
+\texttt{cifar\_7\_1024} & \abcrown & 0.44 & 0.00 & False \\
+ & AutoAttack & 0.45 & 0.00 & False \\
+ & PGD & 0.46 & 0.00 & False \\
+ & FGSM & 0.46 & 0.00 & False \\
+\texttt{resnet\_4b} & \abcrown & 0.52 & 0.00 & False \\
+ & AutoAttack & 0.51 & 0.00 & False \\
+ & PGD & 0.46 & 0.00 & False \\
+ & FGSM & 0.44 & 0.00 & False \\
+\bottomrule
+\end{tabular}

@@ -1,0 +1,31 @@
+% Replaces the tabular of \label{fig:attack_100_vs_all_ks_tests} in main_springer.tex
+\begin{tabular}{llrr}
+\toprule
+algorithm & network & p-value & passed \\
+\midrule
+AutoAttack & \texttt{mnist\_relu\_3\_50} & 0.68 & True \\
+ & \texttt{mnist\_relu\_9\_100} & 0.50 & True \\
+ & \texttt{mnist\_relu\_4\_1024} & 0.65 & True \\
+ & \texttt{mnist-net\_256x2} & 0.06 & True \\
+PGD & \texttt{mnist\_relu\_3\_50} & 0.67 & True \\
+ & \texttt{mnist\_relu\_9\_100} & 0.54 & True \\
+ & \texttt{mnist\_relu\_4\_1024} & 0.68 & True \\
+ & \texttt{mnist-net\_256x2} & 0.29 & True \\
+PGD\_random & \texttt{mnist\_relu\_3\_50} & 0.45 & True \\
+ & \texttt{mnist\_relu\_9\_100} & 0.31 & True \\
+ & \texttt{mnist\_relu\_4\_1024} & 0.52 & True \\
+ & \texttt{mnist-net\_256x2} & 0.34 & True \\
+FGSM & \texttt{mnist\_relu\_3\_50} & 0.09 & True \\
+ & \texttt{mnist\_relu\_9\_100} & 0.34 & True \\
+ & \texttt{mnist\_relu\_4\_1024} & 0.35 & True \\
+ & \texttt{mnist-net\_256x2} & 0.94 & True \\
+targeted\_FAB & \texttt{mnist\_relu\_3\_50} & 0.50 & True \\
+ & \texttt{mnist\_relu\_9\_100} & 0.47 & True \\
+ & \texttt{mnist\_relu\_4\_1024} & 0.61 & True \\
+ & \texttt{mnist-net\_256x2} & 0.12 & True \\
+untargeted\_FAB & \texttt{mnist\_relu\_3\_50} & 0.52 & True \\
+ & \texttt{mnist\_relu\_9\_100} & 0.14 & True \\
+ & \texttt{mnist\_relu\_4\_1024} & 0.79 & True \\
+ & \texttt{mnist-net\_256x2} & 0.05 & False \\
+\bottomrule
+\end{tabular}

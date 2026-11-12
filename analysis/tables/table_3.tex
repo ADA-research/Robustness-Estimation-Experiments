@@ -1,0 +1,44 @@
+% Replaces the tabular of \label{tab:performance} in main_springer.tex
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{lrrrrrrrrrr}
+\toprule
+ & \multicolumn{10}{c}{MNIST networks} \\
+ & \multicolumn{5}{c}{100 images} & \multicolumn{5}{c}{Complete test set} \\
+ \cmidrule(lr){2-6}\cmidrule(lr){7-11}
+algorithm & \makecell{Time\\{[}s{]}} & $Avg(\overline{\varepsilon}^*)$ & RMC & \makecell{Ratio\\$Avg(\overline{\varepsilon}^*)$} & \makecell{Failed\\{[}\%{]}} & \makecell{Time\\{[}s{]}} & $Avg(\overline{\varepsilon}^*)$ & RMC & \makecell{Ratio\\$Avg(\overline{\varepsilon}^*)$} & \makecell{Failed\\{[}\%{]}} \\
+\midrule
+VBA & 290.787 & 0.055 & - & 1.000 & 0.0 & 7.316 & 0.061 & - & 1.000 & 0.6 \\
+\abcrown & 3731.513 & 0.055 & 0.066 & 1.005 & 0.0 & - & - & - & - & - \\
+AutoAttack & 20.233 & 0.055 & 0.028 & 1.006 & 0.0 & 19.999 & 0.061 & 0.213 & 1.002 & 0.6 \\
+PGD & 0.139 & 0.059 & 0.000 & 1.083 & 6.4 & 0.140 & 0.063 & 0.002 & 1.077 & 7.8 \\
+PGD\_random & 0.143 & 0.062 & 0.000 & 1.135 & 0.5 & 0.142 & 0.067 & 0.000 & 1.129 & 2.5 \\
+FGSM & 0.047 & 0.081 & 0.000 & 1.479 & 4.6 & 0.046 & 0.088 & 0.000 & 1.500 & 6.1 \\
+targeted\_FAB & 0.333 & 0.064 & 0.000 & 1.164 & 0.0 & 0.451 & 0.069 & 0.000 & 1.165 & 1.6 \\
+untargeted\_FAB & 0.550 & 0.058 & 0.003 & 1.052 & 0.0 & 0.555 & 0.063 & 0.003 & 1.065 & 1.8 \\
+\bottomrule
+\\
+\toprule
+ & \multicolumn{10}{c}{CIFAR-10 networks} \\
+ & \multicolumn{5}{c}{100 images} & \multicolumn{5}{c}{Complete test set} \\
+ \cmidrule(lr){2-6}\cmidrule(lr){7-11}
+algorithm & \makecell{Time\\{[}s{]}} & $Avg(\overline{\varepsilon}^*)$ & RMC & \makecell{Ratio\\$Avg(\overline{\varepsilon}^*)$} & \makecell{Failed\\{[}\%{]}} & \makecell{Time\\{[}s{]}} & $Avg(\overline{\varepsilon}^*)$ & RMC & \makecell{Ratio\\$Avg(\overline{\varepsilon}^*)$} & \makecell{Failed\\{[}\%{]}} \\
+\midrule
+VBA & 4.766 & 0.007 & - & 1.000 & 0.0 & 5.512 & 0.008 & - & 1.000 & 0.0 \\
+\abcrown & 1833.195 & 0.007 & 0.000 & 1.000 & 0.0 & - & - & - & - & - \\
+AutoAttack & 25.623 & 0.007 & 0.000 & 1.000 & 0.0 & 26.649 & 0.008 & 0.177 & 1.000 & 0.0 \\
+PGD & 0.450 & 0.008 & 0.000 & 1.113 & 0.0 & 0.448 & 0.008 & 0.000 & 1.113 & 0.0 \\
+FGSM & 0.041 & 0.013 & 0.000 & 1.930 & 0.0 & 0.041 & 0.014 & 0.000 & 1.843 & 1.3 \\
+\bottomrule
+\\
+\toprule
+ & \multicolumn{10}{c}{ImageNet networks} \\
+ & \multicolumn{5}{c}{5000 images} & \multicolumn{5}{c}{Complete test set} \\
+ \cmidrule(lr){2-6}\cmidrule(lr){7-11}
+algorithm & \makecell{Time\\{[}s{]}} & $Avg(\overline{\varepsilon}^*)$ & RMC & \makecell{Ratio\\$Avg(\overline{\varepsilon}^*)$} & \makecell{Failed\\{[}\%{]}} & \makecell{Time\\{[}s{]}} & $Avg(\overline{\varepsilon}^*)$ & RMC & \makecell{Ratio\\$Avg(\overline{\varepsilon}^*)$} & \makecell{Failed\\{[}\%{]}} \\
+\midrule
+VBA & 127.995 & 0.004 & - & 1.000 & 0.0 & 22.438 & 0.009 & - & 1.000 & 0.0 \\
+AutoAttack & 126.705 & 0.003 & 0.891 & 1.000 & 10.1 & - & - & - & - & - \\
+PGD & 22.787 & 0.009 & 0.095 & 2.625 & 0.0 & 22.758 & 0.009 & 0.984 & 1.000 & 0.0 \\
+FGSM & 1.129 & 0.212 & 0.002 & 65.818 & 23.7 & 1.129 & 0.209 & 0.004 & 28.120 & 23.8 \\
+\bottomrule
+\end{tabular}

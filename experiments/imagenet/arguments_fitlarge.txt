@@ -1,0 +1,3 @@
+model_name,attack_method,indice,batch_size
+vit_large_patch14_clip_224.openai_ft_in1k,autoattack,1,500
+

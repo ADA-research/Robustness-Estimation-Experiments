@@ -1,0 +1,18 @@
+% Replaces the tabular of \label{tab:total_times_complete_mnist} in main_springer.tex
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrrrrrrrr}
+\toprule
+ & \multicolumn{4}{c}{Time} & \multicolumn{4}{c}{$\overline{\varepsilon}^*$} & Failed \\
+  \cmidrule(lr){2-5}\cmidrule(lr){6-9}
+algorithm & mean & median & min & max & mean & min & max & std & [\%] \\
+\midrule
+VBA & 7.32 & 0.15 & 0.03 & 45.63 & 0.061 & 0.004 & 0.392 & 0.039 & 0.6 \\
+AutoAttack & 20.00 & 20.56 & 6.49 & 45.63 & 0.061 & 0.004 & 0.392 & 0.039 & 0.6 \\
+PGD & 0.14 & 0.12 & 0.09 & 0.97 & 0.063 & 0.004 & 0.196 & 0.035 & 7.8 \\
+PGD\_random & 0.14 & 0.13 & 0.09 & 0.80 & 0.067 & 0.004 & 0.388 & 0.041 & 2.5 \\
+FGSM & 0.05 & 0.05 & 0.03 & 6.30 & 0.088 & 0.004 & 0.392 & 0.062 & 6.1 \\
+targeted\_FAB & 0.45 & 0.30 & 0.19 & 9.16 & 0.069 & 0.004 & 0.302 & 0.037 & 1.6 \\
+untargeted\_FAB & 0.56 & 0.49 & 0.38 & 5.80 & 0.063 & 0.004 & 0.302 & 0.034 & 1.8 \\
+\bottomrule
+\end{tabular}

@@ -1,0 +1,8 @@
+# Analysis notebooks (versions used to generate the committed outputs)
+pandas==3.1.0
+numpy==2.4.6
+scipy==1.17.1
+matplotlib==3.11.2
+seaborn==0.13.2
+notebook==7.6.3
+scikit-learn==1.9.1   # results/cifar10/convert_jair_ids.py

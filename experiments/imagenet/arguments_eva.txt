@@ -1,0 +1,11 @@
+model_name,attack_method,indice,batch_size,start
+vit_large_patch14_clip_224.openai_ft_in1k,pgd,0,5000,4067
+vit_large_patch14_clip_224.openai_ft_in1k,pgd,1,5000,9059
+vit_large_patch14_clip_224.openai_ft_in1k,pgd,2,5000,14055
+vit_large_patch14_clip_224.openai_ft_in1k,pgd,3,5000,19044
+vit_large_patch14_clip_224.openai_ft_in1k,pgd,4,5000,24062
+vit_large_patch14_clip_224.openai_ft_in1k,pgd,5,5000,29065
+vit_large_patch14_clip_224.openai_ft_in1k,pgd,6,5000,34074
+vit_large_patch14_clip_224.openai_ft_in1k,pgd,7,5000,39058
+vit_large_patch14_clip_224.openai_ft_in1k,pgd,8,5000,44046
+vit_large_patch14_clip_224.openai_ft_in1k,pgd,9,5000,49060
